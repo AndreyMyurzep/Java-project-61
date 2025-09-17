@@ -10,3 +10,4 @@
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=AndreyMyurzep_java-project-612&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=AndreyMyurzep_java-project-612)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=AndreyMyurzep_java-project-612&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=AndreyMyurzep_java-project-612)
 [![Actions Status](https://github.com/AndreyMyurzep/java-project-61/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/AndreyMyurzep/java-project-61/actions)
+https://asciinema.org/a/zM778DA3sXdRgvRFUWoSh9Qd7
