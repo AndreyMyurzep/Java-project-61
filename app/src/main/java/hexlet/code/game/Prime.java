@@ -6,6 +6,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Prime {
+    private Prime() { }
     private static final Random random = new Random();
 
     public static void play(Scanner scanner) {
