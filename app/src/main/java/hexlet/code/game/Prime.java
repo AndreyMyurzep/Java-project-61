@@ -5,8 +5,8 @@ import hexlet.code.Engine;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Prime {
-    private static final Random random = new Random();
+public final class Prime {
+    private static final Random RANDOM = new Random();
     private static final int ROUNDS_COUNT = 3;
     private static final int MAX_VALUE = 100;
 
@@ -19,7 +19,7 @@ public class Prime {
         String[] answer = new String[ROUNDS_COUNT];
 
         for (int i = 0; i < ROUNDS_COUNT; i++) {
-            int number = random.nextInt(MAX_VALUE);
+            int number = RANDOM.nextInt(MAX_VALUE);
 
             question[i] = generateQuestion(number);
             answer[i] = generateAnswer(number);

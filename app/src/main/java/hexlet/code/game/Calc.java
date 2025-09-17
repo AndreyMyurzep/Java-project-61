@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public final class Calc {
 
-    private static final Random random = new Random();
+    private static final Random RANDOM = new Random();
     private static final int ROUNDS_COUNT = 3;
     private static final int MAX_RANDOM_VALUE = 100;
     private static final int MAX_OPERATION_NUMBER = 3;
@@ -21,9 +21,9 @@ public final class Calc {
         String[] answer = new String[ROUNDS_COUNT];
 
         for (int i = 0; i < ROUNDS_COUNT; i++) {
-            int number1 = random.nextInt(MAX_RANDOM_VALUE);
-            int number2 = random.nextInt(MAX_RANDOM_VALUE);
-            int operation = random.nextInt(MAX_OPERATION_NUMBER);
+            int number1 = RANDOM.nextInt(MAX_RANDOM_VALUE);
+            int number2 = RANDOM.nextInt(MAX_RANDOM_VALUE);
+            int operation = RANDOM.nextInt(MAX_OPERATION_NUMBER);
 
             question[i] = generateQuestion(number1, number2, operation);
             answer[i] = generateAnswer(number1, number2, operation);

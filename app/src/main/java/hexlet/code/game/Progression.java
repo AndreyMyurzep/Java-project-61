@@ -5,8 +5,8 @@ import hexlet.code.Engine;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Progression {
-    private static final Random random = new Random();
+public final class Progression {
+    private static final Random RANDOM = new Random();
     private static final int ROUNDS_COUNT = 3;
     private static final int FIRST_ELEMENT_MIN_VALUE = 1;
     private static final int FIRST_ELEMENT_MAX_VALUE = 9;
@@ -24,9 +24,9 @@ public class Progression {
         String[] answer = new String[ROUNDS_COUNT];
 
         for (int i = 0; i < ROUNDS_COUNT; i++) {
-            int firstElement = random.nextInt(FIRST_ELEMENT_MIN_VALUE, FIRST_ELEMENT_MAX_VALUE);
-            int index = random.nextInt(INDEX_MIN_VALUE, INDEX_MAX_VALUE);
-            int randomPlace = random.nextInt(MAX_SEQUENCE_LENGTH);
+            int firstElement = RANDOM.nextInt(FIRST_ELEMENT_MIN_VALUE, FIRST_ELEMENT_MAX_VALUE);
+            int index = RANDOM.nextInt(INDEX_MIN_VALUE, INDEX_MAX_VALUE);
+            int randomPlace = RANDOM.nextInt(MAX_SEQUENCE_LENGTH);
 
             question[i] = generateQuestion(firstElement, index, randomPlace);
             answer[i] = generateAnswer(firstElement, index, randomPlace);

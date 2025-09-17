@@ -3,6 +3,7 @@ package hexlet.code.game;
 import java.util.Scanner;
 
 public final class Even {
+    private static final int MOD = 100;
 
     private Even() {
     }
@@ -21,8 +22,7 @@ public final class Even {
         int correctAnswers = 0;
 
         while (correctAnswers < ANSWER_TO_WIN) {
-            int modificator = 100;
-            int number = (int) (Math.random() * modificator);
+            int number = (int) (Math.random() * MOD);
             System.out.println("Question: " + number);
             System.out.print("Your answer: ");
 

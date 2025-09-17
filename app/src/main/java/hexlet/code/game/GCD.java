@@ -6,7 +6,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public final class GCD {
-    private static final Random random = new Random();
+    private static final Random RANDOM = new Random();
     private static final int ROUNDS_COUNT = 3;
     private static final int MAX_VALUE = 100;
 
@@ -20,8 +20,8 @@ public final class GCD {
         String[] answer = new String[ROUNDS_COUNT];
 
         for (int i = 0; i < ROUNDS_COUNT; i++) {
-            int a = random.nextInt(MAX_VALUE);
-            int b = random.nextInt(MAX_VALUE);
+            int a = RANDOM.nextInt(MAX_VALUE);
+            int b = RANDOM.nextInt(MAX_VALUE);
 
             question[i] = generateQuestion(a, b);
             answer[i] = generateAnswer(a, b);
