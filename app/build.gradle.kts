@@ -12,7 +12,7 @@ repositories {
 }
 
 application {
-    mainClass = "App"
+    mainClass = "hexlet.code.App"
 }
 
 dependencies {
@@ -23,6 +23,10 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+}
+
+tasks.getByName("run", JavaExec::class) {
+    standardInput = System.`in`
 }
 
 private fun PluginDependenciesSpecScope.id(id: Any, d: Double) {}
