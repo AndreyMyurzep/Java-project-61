@@ -4,7 +4,8 @@ import java.util.Scanner;
 
 public final class Cli {
 
-    private Cli() { }
+    private Cli() {
+    }
 
     public static void greatings(Scanner scanner) {
 

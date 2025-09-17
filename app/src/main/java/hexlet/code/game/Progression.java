@@ -7,26 +7,46 @@ import java.util.Scanner;
 
 public class Progression {
     private static final Random random = new Random();
+    private static final int ROUNDS_COUNT = 3;
+    private static final int FIRST_ELEMENT_MIN_VALUE = 1;
+    private static final int FIRST_ELEMENT_MAX_VALUE = 9;
+    private static final int INDEX_MIN_VALUE = 1;
+    private static final int INDEX_MAX_VALUE = 9;
+    private static final int MAX_SEQUENCE_LENGTH = 10;
+
+    private Progression() {
+    }
 
     public static void play(Scanner scanner) {
         String gameDiscription = "What number is missing in the progression?";
-        int firstElementMinValue = 1;
-        int firstElementMaxValue = 9;
-        int indexMinValue = 1;
-        int indexMaxValue = 9;
-        int maxSequenceLength = 10;
-        int firstElement = random.nextInt(firstElementMinValue, firstElementMaxValue);
-        int index = random.nextInt(indexMinValue, indexMaxValue);
-        int randomPlace = random.nextInt(maxSequenceLength);
-        String[] arr = new String[maxSequenceLength];
 
-        for (int i = 0; i < maxSequenceLength; i++) {
-            arr[i] = String.valueOf(firstElement + index * i);
+        String[] question = new String[ROUNDS_COUNT];
+        String[] answer = new String[ROUNDS_COUNT];
+
+        for (int i = 0; i < ROUNDS_COUNT; i++) {
+            int firstElement = random.nextInt(FIRST_ELEMENT_MIN_VALUE, FIRST_ELEMENT_MAX_VALUE);
+            int index = random.nextInt(INDEX_MIN_VALUE, INDEX_MAX_VALUE);
+            int randomPlace = random.nextInt(MAX_SEQUENCE_LENGTH);
+
+            question[i] = generateQuestion(firstElement, index, randomPlace);
+            answer[i] = generateAnswer(firstElement, index, randomPlace);
         }
-        String answer = arr[randomPlace];
-
-        arr[randomPlace] = "..";
-        String question = String.join(" ", arr);
         Engine.playGame(scanner, gameDiscription, question, answer);
+    }
+
+    private static String generateQuestion(int firstElement, int index, int randomPlace) {
+        String[] progression = new String[MAX_SEQUENCE_LENGTH];
+
+        for (int i = 0; i < MAX_SEQUENCE_LENGTH; i++) {
+            progression[i] = String.valueOf(firstElement + index * i);
+        }
+
+        progression[randomPlace] = "..";
+        return String.join(" ", progression);
+    }
+
+    private static String generateAnswer(int firstElement, int index, int randomPlace) {
+        int answerValue = firstElement + index * randomPlace;
+        return String.valueOf(answerValue);
     }
 }

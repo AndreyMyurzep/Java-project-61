@@ -4,7 +4,8 @@ import java.util.Scanner;
 
 public final class Even {
 
-    private Even() { }
+    private Even() {
+    }
 
     private static final int ANSWER_TO_WIN = 3;
 
@@ -31,13 +32,13 @@ public final class Even {
             if ((rightNumber && answer.equals("yes")) || (!rightNumber && answer.equals("no"))) {
                 System.out.println("Correct!");
                 correctAnswers++;
-                } else {
-                String  rightAnswer = rightNumber ? "yes" : "no";
+            } else {
+                String rightAnswer = rightNumber ? "yes" : "no";
                 System.out.println("'" + answer + "' is wrong answer ;(. Correct answer was '" + rightAnswer + "'.");
                 System.out.println("Let's try again, " + userName + "!");
-            return;
+                return;
             }
         }
-        System.out.println("Congratulations, " + userName  + "!");
+        System.out.println("Congratulations, " + userName + "!");
     }
 }

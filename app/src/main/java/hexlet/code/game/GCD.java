@@ -7,20 +7,43 @@ import java.util.Scanner;
 
 public final class GCD {
     private static final Random random = new Random();
-    private GCD() { }
+    private static final int ROUNDS_COUNT = 3;
+    private static final int MAX_VALUE = 100;
+
+    private GCD() {
+    }
 
     public static void play(Scanner scanner) {
-        String gameDiscription = "Find the greatest common divisor of given numbers.";
-        int maxValue = 100;
-        int a = random.nextInt(maxValue);
-        int b = random.nextInt(maxValue);
-        String question = a + " " + b;
-        while (b != 0) {
-            int temp = b;
-            b = a % b;
-            a = temp;
+        String gameDescription = "Find the greatest common divisor of given numbers.";
+
+        String[] question = new String[ROUNDS_COUNT];
+        String[] answer = new String[ROUNDS_COUNT];
+
+        for (int i = 0; i < ROUNDS_COUNT; i++) {
+            int a = random.nextInt(MAX_VALUE);
+            int b = random.nextInt(MAX_VALUE);
+
+            question[i] = generateQuestion(a, b);
+            answer[i] = generateAnswer(a, b);
         }
-        String answer = String.valueOf(a);
-        Engine.playGame(scanner, gameDiscription, question, answer);
+
+        Engine.playGame(scanner, gameDescription, question, answer);
+    }
+
+    private static String generateQuestion(int a, int b) {
+        return a + " " + b;
+    }
+
+    private static String generateAnswer(int a, int b) {
+        int num1 = a;
+        int num2 = b;
+
+        while (num2 != 0) {
+            int temp = num2;
+            num2 = num1 % num2;
+            num1 = temp;
+        }
+
+        return String.valueOf(num1);
     }
 }

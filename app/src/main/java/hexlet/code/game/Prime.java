@@ -6,24 +6,43 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Prime {
-    private Prime() { }
     private static final Random random = new Random();
+    private static final int ROUNDS_COUNT = 3;
+    private static final int MAX_VALUE = 100;
+
+    private Prime() { }
 
     public static void play(Scanner scanner) {
-        String gameDiscription = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
-        int maxValue = 100;
-        int number = random.nextInt(maxValue);
-        boolean rightAnswer = number >= 2;
+        String gameDescription = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
 
-        for (int i = 2; i < number / 2; i++) {
+        String[] question = new String[ROUNDS_COUNT];
+        String[] answer = new String[ROUNDS_COUNT];
+
+        for (int i = 0; i < ROUNDS_COUNT; i++) {
+            int number = random.nextInt(MAX_VALUE);
+
+            question[i] = generateQuestion(number);
+            answer[i] = generateAnswer(number);
+        }
+
+        Engine.playGame(scanner, gameDescription, question, answer);
+    }
+
+    private static String generateQuestion(int number) {
+        return String.valueOf(number);
+    }
+
+    private static String generateAnswer(int number) {
+        if (number < 2) {
+            return "no";
+        }
+
+        for (int i = 2; i <= Math.sqrt(number); i++) {
             if (number % i == 0) {
-                rightAnswer = false;
-                break;
+                return "no";
             }
         }
-        String answer = rightAnswer ? "yes" : "no";
-        String question = String.valueOf(number);
 
-        Engine.playGame(scanner, gameDiscription, question, answer);
+        return "yes";
     }
 }
