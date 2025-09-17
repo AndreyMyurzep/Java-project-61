@@ -8,7 +8,7 @@ public final class Cli {
 
     public static void greatings(Scanner scanner) {
 
-        System.out.print("What is your name? ");
+        System.out.print("May I have your name? ");
         String userName = scanner.next();
         System.out.println("Hello, " + userName + "!");
 
