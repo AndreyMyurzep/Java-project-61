@@ -7,9 +7,9 @@ public final class Engine {
     private Engine() {
     }
 
-    private static final int ANSWERS_TO_WIN = 3;
+    public static final int ROUND_COUNT = 3;
 
-    public static void playGame(Scanner scanner, String gameDescription, String[] question, String[] answer) {
+    public static void playGame(Scanner scanner, String gameDescription, String[][] gameDataBase) {
         System.out.println("Welcome to the Brain Games!");
         System.out.println("May I have your name? ");
         String name = scanner.nextLine();
@@ -17,15 +17,18 @@ public final class Engine {
         System.out.println(gameDescription);
 
 
-        for (int i = 0; i < ANSWERS_TO_WIN; i++) {
-            System.out.println("Question: " + question[i]);
+        for (int i = 0; i < ROUND_COUNT; i++) {
+            String question = gameDataBase[i][0];
+            String answer = gameDataBase[i][1];
+
+            System.out.println("Question: " + question);
             System.out.print("Your answer: ");
             String userAnswer = scanner.nextLine();
 
-            if (userAnswer.equalsIgnoreCase(answer[i])) {
+            if (userAnswer.equalsIgnoreCase(answer)) {
                 System.out.println("Correct!");
             } else {
-                System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + answer[i] + "'");
+                System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + answer + "'");
                 System.out.println("Let's try again, " + name + "!");
                 return;
             }

@@ -7,25 +7,22 @@ import java.util.Scanner;
 
 public final class Prime {
     private static final Random RANDOM = new Random();
-    private static final int ROUNDS_COUNT = 3;
     private static final int MAX_VALUE = 100;
 
     private Prime() { }
 
     public static void play(Scanner scanner) {
         String gameDescription = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
+        String[][] gameDataBase = new String[Engine.ROUND_COUNT][2];
 
-        String[] question = new String[ROUNDS_COUNT];
-        String[] answer = new String[ROUNDS_COUNT];
-
-        for (int i = 0; i < ROUNDS_COUNT; i++) {
+        for (int i = 0; i < Engine.ROUND_COUNT; i++) {
             int number = RANDOM.nextInt(MAX_VALUE);
 
-            question[i] = generateQuestion(number);
-            answer[i] = generateAnswer(number);
+            gameDataBase[i][0] = generateQuestion(number);
+            gameDataBase[i][1] = generateAnswer(number);
         }
 
-        Engine.playGame(scanner, gameDescription, question, answer);
+        Engine.playGame(scanner, gameDescription, gameDataBase);
     }
 
     private static String generateQuestion(int number) {

@@ -7,7 +7,6 @@ import java.util.Scanner;
 
 public final class Progression {
     private static final Random RANDOM = new Random();
-    private static final int ROUNDS_COUNT = 3;
     private static final int FIRST_ELEMENT_MIN_VALUE = 1;
     private static final int FIRST_ELEMENT_MAX_VALUE = 9;
     private static final int INDEX_MIN_VALUE = 1;
@@ -19,19 +18,17 @@ public final class Progression {
 
     public static void play(Scanner scanner) {
         String gameDiscription = "What number is missing in the progression?";
+        String[][] gameDataBase = new String[Engine.ROUND_COUNT][2];
 
-        String[] question = new String[ROUNDS_COUNT];
-        String[] answer = new String[ROUNDS_COUNT];
-
-        for (int i = 0; i < ROUNDS_COUNT; i++) {
+        for (int i = 0; i < Engine.ROUND_COUNT; i++) {
             int firstElement = RANDOM.nextInt(FIRST_ELEMENT_MIN_VALUE, FIRST_ELEMENT_MAX_VALUE);
             int index = RANDOM.nextInt(INDEX_MIN_VALUE, INDEX_MAX_VALUE);
             int randomPlace = RANDOM.nextInt(MAX_SEQUENCE_LENGTH);
 
-            question[i] = generateQuestion(firstElement, index, randomPlace);
-            answer[i] = generateAnswer(firstElement, index, randomPlace);
+            gameDataBase[i][0] = generateQuestion(firstElement, index, randomPlace);
+            gameDataBase[i][1] = generateAnswer(firstElement, index, randomPlace);
         }
-        Engine.playGame(scanner, gameDiscription, question, answer);
+        Engine.playGame(scanner, gameDiscription, gameDataBase);
     }
 
     private static String generateQuestion(int firstElement, int index, int randomPlace) {

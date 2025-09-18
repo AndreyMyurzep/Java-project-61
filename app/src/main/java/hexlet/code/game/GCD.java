@@ -7,7 +7,6 @@ import java.util.Scanner;
 
 public final class GCD {
     private static final Random RANDOM = new Random();
-    private static final int ROUNDS_COUNT = 3;
     private static final int MAX_VALUE = 100;
 
     private GCD() {
@@ -15,19 +14,17 @@ public final class GCD {
 
     public static void play(Scanner scanner) {
         String gameDescription = "Find the greatest common divisor of given numbers.";
+        String[][] gameDataBase = new String[Engine.ROUND_COUNT][2];
 
-        String[] question = new String[ROUNDS_COUNT];
-        String[] answer = new String[ROUNDS_COUNT];
-
-        for (int i = 0; i < ROUNDS_COUNT; i++) {
+        for (int i = 0; i < Engine.ROUND_COUNT; i++) {
             int a = RANDOM.nextInt(MAX_VALUE);
             int b = RANDOM.nextInt(MAX_VALUE);
 
-            question[i] = generateQuestion(a, b);
-            answer[i] = generateAnswer(a, b);
+            gameDataBase[i][0] = generateQuestion(a, b);
+            gameDataBase[i][1] = generateAnswer(a, b);
         }
 
-        Engine.playGame(scanner, gameDescription, question, answer);
+        Engine.playGame(scanner, gameDescription, gameDataBase);
     }
 
     private static String generateQuestion(int a, int b) {
